@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobar DNI/NIE</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="./id-card_102342.svg" type="image/x-icon">
+    <style type="text/tailwindcss">
+        @import "tailwindcss"; 
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-b from-[#124e78] via-[#f0f0c9] to-[#124e78] flex items-center justify-center min-h-screen p-4">
+
+    <div
+        class="bg-white border-4 border-[#124e78] p-6 md:p-8 rounded-2xl w-full max-w-[90vw] md:max-w-xl shadow-2xl transition-all duration-300 hover:scale-105">
+
+        <h2 class="text-2xl font-bold text-[#124e78] mb-6 text-center tracking-wide">
+            Validar DNI / NIE
+        </h2>
+
+        <div class="space-y-4">
+            <div>
+                <label for="documentoInput" class="block text-sm text-[#124e78] font-semibold">
+                    Introduce tu documento con letra
+                </label>
+                <input type="text" id="documentoInput"
+                    class="w-full mt-1 p-3 border text-[#124e78] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#124e78] uppercase transition-all"
+                    placeholder="Ej: 12345678Z o X1234567M">
+            </div>
+
+            <button onclick="procesarDocumento()"
+                class="w-full bg-[#124e78] hover:bg-[#1a5f91] mt-5 text-white font-bold py-3 mt-2 rounded-lg transition-all active:scale-95 cursor-pointer">
+                Verificar Documento
+            </button>
+        </div>
+
+        <p id="pantallaResultado" class="text-[#124e78] mt-6 font-medium text-center min-h-[24px]">
+        </p>
+    </div>
+
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
