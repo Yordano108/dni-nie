@@ -4,8 +4,8 @@ const RESULTADO = document.getElementById("resultado");
 function validarDNI_NIE(documento) {
     let doc = documento.trim().toUpperCase();
 
-    const regex = /^[XYZ\d]\d{7}[A-Z]$/;
-    if (!regex.test(doc)) {
+    const patron = /^[XYZ\d]\d{7}[A-Z]$/;
+    if (!patron.test(doc)) {
         return "⚠️ El formato introducido no es válido";
     }
 
