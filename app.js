@@ -1,5 +1,5 @@
-const INPUT_DOCUMENTO = document.getElementById("documentoInput");
-const PANTALLA_RESULTADO = document.getElementById("pantallaResultado");
+const DOCUMENTO = document.getElementById("documento");
+const RESULTADO = document.getElementById("resultado");
 
 function validarDNI_NIE(documento) {
     let doc = documento.trim().toUpperCase();
@@ -29,9 +29,9 @@ function validarDNI_NIE(documento) {
 }
 
 function procesarDocumento() {
-    const valorInput = INPUT_DOCUMENTO.value;
+    const valorInput = DOCUMENTO.value;
 
     const mensajeResultado = validarDNI_NIE(valorInput);
 
-    PANTALLA_RESULTADO.innerText = mensajeResultado;
+    RESULTADO.innerText = mensajeResultado;
 }
