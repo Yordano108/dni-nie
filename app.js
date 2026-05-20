@@ -1,37 +1,35 @@
 const DOCUMENTO = document.getElementById("documento");
 const RESULTADO = document.getElementById("resultado");
 
-function validarDNI_NIE(documento) {
-    let doc = documento.trim().toUpperCase();
+function procesarDocumento() {
+    let doc = DOCUMENTO.value.trim().toUpperCase();
 
     const patron = /^[XYZ\d]\d{7}[A-Z]$/;
     if (!patron.test(doc)) {
-        return "⚠️ El formato introducido no es válido";
+        RESULTADO.innerText = "⚠️ El formato introducido no es válido";
+        return;
     }
 
-    let numeroEvaluar = doc;
-    if (doc.startsWith("X")) numeroEvaluar = doc.replace("X", "0");
-    if (doc.startsWith("Y")) numeroEvaluar = doc.replace("Y", "1");
-    if (doc.startsWith("Z")) numeroEvaluar = doc.replace("Z", "2");
+    let inicio = doc;
 
-    const numeros = parseInt(numeroEvaluar.substring(0, 8), 10);
-    const letraIntroducida = doc.charAt(8);
+    if (doc.startsWith("X")) {
+        inicio = "0" + doc.slice(1, 8);
+    } else if (doc.startsWith("Y")) {
+        inicio = "1" + doc.slice(1, 8);
+    } else if (doc.startsWith("Z")) {
+        inicio = "2" + doc.slice(1, 8);
+    }
+
+    const numeros = parseInt(inicio.substring(0, 8), 10);
+    const letraIntroducida = doc[8];
 
     const letrasOficiales = "TRWAGMYFPDXBNJZSQVHLCKE";
     const resto = numeros % 23;
-    const letraCorrecta = letrasOficiales.charAt(resto);
+    const letraCorrecta = letrasOficiales[resto];
 
     if (letraIntroducida === letraCorrecta) {
-        return `¡Perfecto! El documento ${doc} es válido`;
+        RESULTADO.innerText = `¡Perfecto! El documento ${doc} es válido`;
     } else {
-        return `Letra incorrecta. Introdujiste la '${letraIntroducida}', pero corresponde la '${letraCorrecta}'`;
+        RESULTADO.innerText = `Letra incorrecta. Introdujiste la '${letraIntroducida}', pero corresponde la '${letraCorrecta}'`;
     }
-}
-
-function procesarDocumento() {
-    const valorInput = DOCUMENTO.value;
-
-    const mensajeResultado = validarDNI_NIE(valorInput);
-
-    RESULTADO.innerText = mensajeResultado;
 }
